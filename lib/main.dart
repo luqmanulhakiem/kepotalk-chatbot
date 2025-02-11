@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: GetMaterialApp(
-        title: 'Flutter Theme Switch',
+        title: 'KepoTalk',
         theme: AppTheme.lightThemeMode,
         darkTheme: AppTheme.darkThemeMode,
         themeMode: themeProvider.themeMode,

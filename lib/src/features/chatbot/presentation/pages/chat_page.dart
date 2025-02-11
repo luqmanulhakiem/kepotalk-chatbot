@@ -116,7 +116,7 @@ class _ChatPageState extends State<ChatPage> {
                   Expanded(
                     child: TextFormField(
                       controller: chatController,
-                      style: AppFont.generalSans12.copyWith(
+                      style: AppFont.generalSans14.copyWith(
                           color: isDarkMode ? Colors.white : Colors.black),
                     ),
                   ),

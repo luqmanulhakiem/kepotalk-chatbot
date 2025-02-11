@@ -29,7 +29,7 @@ class ChatSelfBubleWidget extends StatelessWidget {
           ),
           child: Text(
             message,
-            style: AppFont.generalSans16,
+            style: AppFont.generalSans14,
           ),
         ),
       ],
