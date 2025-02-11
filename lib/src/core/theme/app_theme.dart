@@ -8,7 +8,7 @@ class AppTheme {
       style: ButtonStyle(
         iconColor: WidgetStatePropertyAll(Colors.white),
         foregroundColor: WidgetStatePropertyAll(Colors.white),
-        backgroundColor: WidgetStatePropertyAll(Colors.black),
+        backgroundColor: WidgetStatePropertyAll(Color(0xFF64B5F6)),
       ),
     ),
     textTheme: TextTheme(
@@ -19,6 +19,24 @@ class AppTheme {
         textStyle: WidgetStatePropertyAll(
           AppFont.generalSansSerif.copyWith(color: Colors.black),
         ),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xFF64B5F6)),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xFFF44336)),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xFF64B5F6)),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xFF9E9E9E)),
+        borderRadius: BorderRadius.circular(20),
       ),
     ),
   );
@@ -40,6 +58,24 @@ class AppTheme {
         textStyle: WidgetStatePropertyAll(
           AppFont.generalSansSerif.copyWith(color: Colors.white),
         ),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Colors.white),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xFFF44336)),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Colors.white),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xFF9E9E9E)),
+        borderRadius: BorderRadius.circular(20),
       ),
     ),
   );

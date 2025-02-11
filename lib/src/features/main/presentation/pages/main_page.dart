@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart' as getx;
 import 'package:kepotalk/src/core/data/datasources/theme_provider.dart';
 import 'package:kepotalk/src/core/theme/app_font.dart';
+import 'package:kepotalk/src/features/chatbot/presentation/pages/chat_page.dart';
 import 'package:kepotalk/src/features/main/widgets/history_item_button.dart';
 import 'package:kepotalk/src/features/main/widgets/menu_button_widget.dart';
 import 'package:provider/provider.dart';
@@ -96,7 +98,10 @@ class MainPage extends StatelessWidget {
                         icon: Icons.message,
                         label: "Chat with Bot",
                         onPressed: () {
-                          debugPrint("chat With Kepotalk");
+                          getx.Get.to(
+                            const ChatPage(),
+                            transition: getx.Transition.rightToLeftWithFade,
+                          );
                         },
                       ),
                       const SizedBox(height: 10),
