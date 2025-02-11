@@ -18,9 +18,10 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  List<ChatEntity> chatlist = [
+  ValueNotifier<List<ChatEntity>> chatlistNotifier = ValueNotifier([
     ChatEntity(message: "Halo Pengguna KepoTalk, Mau Kepo Apa Hari ini?"),
-  ];
+  ]);
+
   ValueNotifier<bool> isLoading = ValueNotifier(false);
   final ScrollController _scrollController = ScrollController();
 
@@ -67,9 +68,11 @@ class _ChatPageState extends State<ChatPage> {
                         } else if (state is GeminiLoaded) {
                           isLoading.value = false;
 
-                          setState(() {
-                            chatlist.add(ChatEntity(message: state.response));
-                          });
+                          chatlistNotifier.value = [
+                            ...chatlistNotifier.value,
+                            ChatEntity(message: state.response),
+                          ];
+
                           _scrollToBottom();
                         } else {
                           isLoading.value = false;
@@ -79,31 +82,36 @@ class _ChatPageState extends State<ChatPage> {
                         height: constraint.maxHeight,
                         child: SingleChildScrollView(
                           controller: _scrollController,
-                          child: Column(
-                            children: [
-                              ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: chatlist.length,
-                                itemBuilder: (context, index) {
-                                  final item = chatlist[index];
+                          child: ValueListenableBuilder(
+                              valueListenable: chatlistNotifier,
+                              builder: (context, value, child) {
+                                return Column(
+                                  children: [
+                                    ListView.builder(
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemCount: value.length,
+                                      itemBuilder: (context, index) {
+                                        final item = value[index];
 
-                                  if (!item.fromApi) {
-                                    return ChatSelfBubleWidget(
-                                      message: item.message,
-                                    );
-                                  }
-                                  return ChatBotBubleWidget(
-                                    message: item.message,
-                                  );
-                                },
-                              ),
-                              if (chatlist.isNotEmpty &&
-                                  !chatlist.last.fromApi &&
-                                  isLoading.value)
-                                const ChatBotLoadingWidget()
-                            ],
-                          ),
+                                        if (!item.fromApi) {
+                                          return ChatSelfBubleWidget(
+                                            message: item.message,
+                                          );
+                                        }
+                                        return ChatBotBubleWidget(
+                                          message: item.message,
+                                        );
+                                      },
+                                    ),
+                                    if (value.isNotEmpty &&
+                                        !value.last.fromApi &&
+                                        isLoading.value)
+                                      const ChatBotLoadingWidget()
+                                  ],
+                                );
+                              }),
                         ),
                       ),
                     );
@@ -123,12 +131,15 @@ class _ChatPageState extends State<ChatPage> {
                   IconButton(
                     onPressed: () {
                       if (chatController.text.isNotEmpty) {
-                        debugPrint(chatController.text);
-                        setState(() {
-                          chatlist.add(ChatEntity(
-                              message: chatController.text, fromApi: false));
-                        });
+                        debugPrint("A");
+                        chatlistNotifier.value = [
+                          ...chatlistNotifier.value,
+                          ChatEntity(
+                              message: chatController.text, fromApi: false),
+                        ];
+                        Future.delayed(const Duration(seconds: 1));
                         getData(chatController.text);
+                        chatController.text = "";
                       }
                     },
                     icon: const Icon(Icons.send),
