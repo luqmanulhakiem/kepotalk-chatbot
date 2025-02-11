@@ -4,7 +4,10 @@
 ## Feature
 - Gemini ChatBot
 - ThemeMode
+- MultiPlatform (Android, IOS)
 
+## TechStack
+- Flutter
 
 ## Packages
 - bloc
