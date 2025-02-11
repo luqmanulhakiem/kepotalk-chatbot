@@ -124,14 +124,16 @@ class _ChatPageState extends State<ChatPage> {
                   Expanded(
                     child: TextFormField(
                       controller: chatController,
+                      decoration:
+                          const InputDecoration(hintText: "Ask KepoTalk"),
                       style: AppFont.generalSans14.copyWith(
-                          color: isDarkMode ? Colors.white : Colors.black),
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
                     ),
                   ),
                   IconButton(
                     onPressed: () {
                       if (chatController.text.isNotEmpty) {
-                        debugPrint("A");
                         chatlistNotifier.value = [
                           ...chatlistNotifier.value,
                           ChatEntity(

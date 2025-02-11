@@ -7,9 +7,18 @@ class GeminiRepositoryImpl implements GeminiRepository {
   Future<String> geminiTeks(String keyword) async {
     await EnvConfig.loadEnv();
     final apiKey = EnvConfig.geminiApiKey;
-    final model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: apiKey);
-    final content = [Content.text(keyword)];
-    final response = await model.generateContent(content);
+    final model = GenerativeModel(
+      model: 'gemini-1.5-flash',
+      apiKey: apiKey,
+      generationConfig: GenerationConfig(maxOutputTokens: 100),
+    );
+    final chat = model.startChat(history: [
+      Content.text('Hello, I have 2 dogs in my house.'),
+      Content.model(
+          [TextPart('Great to meet you. What would you like to know?')])
+    ]);
+    final content = Content.text(keyword);
+    final response = await chat.sendMessage(content);
     return response.text ?? "";
   }
 }
