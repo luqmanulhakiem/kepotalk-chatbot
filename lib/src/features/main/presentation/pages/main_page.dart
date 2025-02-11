@@ -5,6 +5,7 @@ import 'package:kepotalk/src/core/theme/app_font.dart';
 import 'package:kepotalk/src/features/chatbot/presentation/pages/chat_page.dart';
 import 'package:kepotalk/src/features/main/widgets/history_item_button.dart';
 import 'package:kepotalk/src/features/main/widgets/menu_button_widget.dart';
+import 'package:kepotalk/src/shared/presentation/widgets/cooming_soon_dialog.dart';
 import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget {
@@ -45,12 +46,13 @@ class MainPage extends StatelessWidget {
                   children: [
                     const Text("History"),
                     TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "See All",
-                          style: AppFont.generalSans16.copyWith(
-                              color: isDarkMode ? Colors.white : Colors.black),
-                        )),
+                      onPressed: () {},
+                      child: Text(
+                        "See All",
+                        style: AppFont.generalSans16.copyWith(
+                            color: isDarkMode ? Colors.white : Colors.black),
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 10),
@@ -83,6 +85,7 @@ class MainPage extends StatelessWidget {
             label: "Talk With KepoTalk",
             onPressed: () {
               debugPrint("Talk With Kepotalk");
+              coomingSoonDialog(context);
             },
           ),
           Expanded(
@@ -111,7 +114,7 @@ class MainPage extends StatelessWidget {
                         icon: Icons.image,
                         label: "Search by Image",
                         onPressed: () {
-                          debugPrint("search With Kepotalk");
+                          coomingSoonDialog(context);
                         },
                       ),
                     ],

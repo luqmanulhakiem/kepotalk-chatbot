@@ -10,14 +10,14 @@ import 'package:kepotalk/src/features/chatbot/presentation/widgets/chat_bot_load
 import 'package:kepotalk/src/features/chatbot/presentation/widgets/chat_self_buble_widget.dart';
 import 'package:provider/provider.dart';
 
-class ChatPage extends StatefulWidget {
-  const ChatPage({super.key});
+class ChatImagePage extends StatefulWidget {
+  const ChatImagePage({super.key});
 
   @override
-  State<ChatPage> createState() => _ChatPageState();
+  State<ChatImagePage> createState() => _ChatImagePageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatImagePageState extends State<ChatImagePage> {
   ValueNotifier<List<ChatEntity>> chatlistNotifier = ValueNotifier([
     ChatEntity(message: "Halo Pengguna KepoTalk, Mau Kepo Apa Hari ini?"),
   ]);
@@ -165,9 +165,7 @@ class _ChatPageState extends State<ChatPage> {
           icon: const Icon(Icons.arrow_back),
         ),
         const Expanded(
-          child: Center(
-            child: Text("Kepo Chat"),
-          ),
+          child: Center(child: Text("Kepo Chat")),
         ),
         IconButton(
           style: const ButtonStyle(

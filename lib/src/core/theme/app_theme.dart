@@ -4,6 +4,23 @@ import 'package:kepotalk/src/core/theme/app_font.dart';
 class AppTheme {
   static final lightThemeMode = ThemeData.light().copyWith(
     scaffoldBackgroundColor: Colors.white,
+    dialogBackgroundColor: Colors.white,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        shape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        backgroundColor: const WidgetStatePropertyAll(Colors.white),
+      ),
+    ),
+    dialogTheme: DialogTheme(
+      backgroundColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
     iconButtonTheme: const IconButtonThemeData(
       style: ButtonStyle(
         iconColor: WidgetStatePropertyAll(Colors.white),
@@ -48,6 +65,22 @@ class AppTheme {
         iconColor: WidgetStatePropertyAll(Colors.black),
         foregroundColor: WidgetStatePropertyAll(Colors.black),
         backgroundColor: WidgetStatePropertyAll(Colors.white),
+      ),
+    ),
+    dialogTheme: DialogTheme(
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        shape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        backgroundColor: const WidgetStatePropertyAll(Colors.black),
       ),
     ),
     textTheme: TextTheme(
