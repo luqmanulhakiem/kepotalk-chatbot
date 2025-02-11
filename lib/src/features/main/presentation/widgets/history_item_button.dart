@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:kepotalk/src/core/data/datasources/theme_provider.dart';
 import 'package:kepotalk/src/core/theme/app_font.dart';
+import 'package:kepotalk/src/features/main/domain/entity/history_entity.dart';
+import 'package:kepotalk/src/features/main/domain/utils/history_color_converter.dart';
+import 'package:kepotalk/src/features/main/domain/utils/history_icon_converter.dart';
 import 'package:provider/provider.dart';
 
 class HistoryItemButton extends StatefulWidget {
+  final HistoryEntity item;
   const HistoryItemButton({
     super.key,
+    required this.item,
   });
 
   @override
@@ -31,11 +36,8 @@ class _HistoryItemButtonState extends State<HistoryItemButton> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CircleAvatar(
-            backgroundColor: Colors.blue[300],
-            child: const Icon(
-              Icons.mic,
-              color: Colors.white,
-            ),
+            backgroundColor: HistoryColorConverter.convert(widget.item.type),
+            child: HistoryIconConverter.convert(widget.item.type),
           ),
           Expanded(
             child: LayoutBuilder(
@@ -43,8 +45,8 @@ class _HistoryItemButtonState extends State<HistoryItemButton> {
                 return Container(
                   padding: const EdgeInsets.all(5),
                   width: constraint.maxWidth,
-                  child: const Text(
-                    "Lorem ipsum sit amet dolor adlskadalksndalk",
+                  child: Text(
+                    widget.item.lastMessage,
                     style: AppFont.generalSans16,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
